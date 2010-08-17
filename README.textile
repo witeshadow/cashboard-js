@@ -1,0 +1,23 @@
+h1. Cashboard-js
+
+This project is the official Javascript wrapper for the "Cashboard API":http://api.cashboardapp.com created and maintained by "Subimage LLC":http://www.subimage.com.
+
+"Cashboard":http://www.getcashboard.com is an online service that allows you to track time, create estimates, invoice your clients, and collect payments via credit cards or PayPal.
+
+Cashboard-js uses the JSON data format to speak to the Cashboard API.
+
+h2. Purpose
+
+The aim of this project is to provide a quick and simple way to use the Cashboard API from javascript widgets, mobile devices, and other lightweight clients.
+
+Cashboard-js doesn't leverage a framework like "prototype.js":http://www.prototypejs.org/, "jquery":http://jquery.com/, or "mootools":http://mootools.net/ so you can hopefully mix and match it with your favorite framework of choice.
+
+h2. Links
+
+* "Cashboard API Documentation":http://api.cashboardapp.com
+* "Cashboard API Forum":http://forum.getcashboard.com/forums/7
+* "Source code for Cashboard-js":http://github.com/subimage/cashboard-js
+
+h2. License
+
+Cashboard-rb is released under the MIT License.

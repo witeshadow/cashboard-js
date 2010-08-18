@@ -12,6 +12,53 @@ The aim of this project is to provide a quick and simple way to use the Cashboar
 
 Cashboard-js doesn't leverage a framework like "prototype.js":http://www.prototypejs.org/, "jquery":http://jquery.com/, or "mootools":http://mootools.net/ so you can hopefully mix and match it with your favorite framework of choice.
 
+h2. Usage
+
+All methods that go across the wire (list, create, update, destroy) can be passed callback functions. These functions are run at the appropriate time in the request lifecycle as you'd expect.
+
+Callbacks will be returned either single or multiple CashboardObjects inside an array, depending on the resource type you're interacting with.
+
+h3. Callbacks
+* onLoading
+* onSuccess
+* onFailure
+
+
+h3. Simple LIST Usage
+
+bc.. CASHBOARD.authenticate('my_subdomain', 'my_api_key');
+var employees = CASHBOARD.employees.list({
+ onLoading: function() {
+   // Your loading function here
+ },
+ onSuccess: function(cb_employees) {
+   // Do something with employees here
+ },
+ onFailure: function(code, message) {
+   alert("API error: " + code + " - " + message);
+ }
+});
+
+
+h3. Simple CREATE Usage
+
+bc.. CASHBOARD.authenticate('my_subdomain', 'my_api_key');
+CASHBOARD.employees.create(
+ {
+   first_name: 'Bob',
+   last_name: 'Builder',
+   email_address: 'bob@builder.com'
+ },
+ {
+   onLoading: yourLoaderFunction,
+   onSuccess: function(created_employee){
+     // do something with the employee here
+   },
+   onFailure: referenceToFailureFunction
+ }
+);
+
+
 h2. Roadmap
 
 I'd like to get around to this sooner or later.

@@ -1,7 +1,18 @@
 var DEMO = {
   // Cashboard connection
   cb_conn: null,
+  auth_cookie_name: 'demo-credentials',
   
+  // Run on page load
+  init: function() {
+    // Try to set auth credentials from cookie
+    var auth_cookie = COOKIES.get(DEMO.auth_cookie_name);
+    if (auth_cookie !== null) {
+      var auth_vals = JSON.parse(auth_cookie);
+      document.getElementById('subdomain').value = auth_vals['subdomain'];
+      document.getElementById('api_key').value = auth_vals['api_key']
+    }
+  },
 
   // Grabs authentication credentials from HTML form and creates
   // new Cashboard API connection.
@@ -11,8 +22,18 @@ var DEMO = {
   authenticate: function() {
     var subdomain = document.getElementById('subdomain').value;
     var api_key = document.getElementById('api_key').value;
+    // Store credentials for page load refreshes.
+    COOKIES.set(
+      DEMO.auth_cookie_name, 
+      JSON.stringify({
+        subdomain: subdomain,
+        api_key: api_key
+      }),
+      COOKIES.getExpDate(90,0,0)
+    );
     CASHBOARD.authenticate(subdomain, api_key);
   },
+  
   // Shortcut to grab display reference
   display: function(content) {
     var area = document.getElementById('display_area');
@@ -156,3 +177,5 @@ var DEMO = {
   //   my_invoice.destroy();
   // }
 };
+
+addEvent(window, 'load', DEMO.init);

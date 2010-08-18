@@ -39,6 +39,7 @@ var employees = CASHBOARD.employees.list({
  }
 });
 
+p. 
 
 h3. Simple CREATE Usage
 
@@ -58,6 +59,7 @@ CASHBOARD.employees.create(
  }
 );
 
+p. 
 
 h2. Roadmap
 

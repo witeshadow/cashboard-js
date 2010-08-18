@@ -10,7 +10,16 @@ h2. Purpose
 
 The aim of this project is to provide a quick and simple way to use the Cashboard API from javascript widgets, mobile devices, and other lightweight clients.
 
+We will most likely be using it for any new Apple Dashboard Widgets or small client apps we develop in house.
+
 Cashboard-js doesn't leverage a framework like "prototype.js":http://www.prototypejs.org/, "jquery":http://jquery.com/, or "mootools":http://mootools.net/ so you can hopefully mix and match it with your favorite framework of choice.
+
+h2. Roadmap
+
+I'd like to get around to this sooner or later.
+
+# A testing framework of some sort and *gasp* actual unit tests
+# Automated build script that combines all JS files and minifies them
 
 h2. Links
 
@@ -20,4 +29,4 @@ h2. Links
 
 h2. License
 
-Cashboard-rb is released under the MIT License.
+Cashboard-js is released under the MIT License.

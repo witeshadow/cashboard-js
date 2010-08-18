@@ -1,0 +1,213 @@
+* { margin: 0; padding: 0; }
+
+body {
+  background-color: #fff;
+  color: #555;
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+}
+
+html {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+body, input, select, option, textarea {
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+strong, em, b, i, h1, h2, h3, h4, input, textarea {
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+}
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+a#overview_link {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px;
+  display: block;
+  background-color: #EBFAEB;
+  text-decoration:none;
+  color: #29A329;
+}
+
+h1, h2 {
+  color: #444;
+}
+
+h1 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+h1.title {
+}
+
+h2 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+h3, h4 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+h3 div {
+  font-weight: normal;
+  font-size: 11px;
+  font-weight: italic;
+  display:block;
+  padding-left: 10px;
+  color: #999;
+}
+
+h4 { margin-left: 10px;}
+
+ul {
+  position: relative;
+  margin-left: 30px;
+}
+ul ul {
+  margin-left: 15px;
+}
+
+hr {
+  margin-top:29px;
+  margin-bottom:10px;
+  border-style: solid;
+  border: 0px;
+  border-top: 1px dotted #ccc;
+
+}
+
+li {
+}
+
+p {
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+div#title {
+  background-color: #666;
+  text-align:center;
+  border-top: 2px solid #555;
+  border-bottom: 2px solid #555;
+}
+
+div#title h1 {
+  color: #ccc;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+span.beta {
+  color: #ccffcc;
+  font-weight: normal;
+  font-size: 0.4em;
+  font-style: italic;
+  position: absolute;
+  margin-top:-10px;
+  margin-left:5px;
+}
+
+span.hlt {
+  background-color: #FDFFCC;
+  color: #333;
+}
+
+span.no_auth, .permissions {
+  color: #DA3838;
+}
+h4.permissions {
+  font-style: italic;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+pre {
+  background-color: #efefef;
+  border: 1px solid #ddd;
+  color: #2E6B2E;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  overflow: auto;
+}
+
+#sidebar a {
+  font-weight: bold;
+}
+
+.info {
+  font-size: 0.9em;
+  color: #999;
+}
+
+table.properties {
+  width: 100%;
+}
+
+table.properties th {
+  background-color: #eee;
+  text-align: left;
+}
+table.properties th, table.properties td {
+  padding: 4px;
+}
+
+button {
+  padding: 4px;
+  color: #396B2E;
+  border: 2px solid #79CC66;
+  background-color: #DAF7D4;
+  font-weight: bold;
+  cursor: pointer;
+  cursor: hand;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+fieldset legend {
+  color: #999;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0px 10px;
+}
+
+fieldset label {
+  clear: both;
+  float: left;
+  width: 100px;
+  height: 20px;
+  padding: 2px;
+  text-transform: uppercase;
+  background-color: #ddd;
+  color: #999;
+  margin-right: 10px;
+  text-align: center;
+}
+
+fieldset input[type="text"] {
+  height: 20px;
+}
+
+#container {
+  width: 960px;
+  margin: auto auto;
+}
+
+#button_bar {
+  padding: 10px;
+  background-color: #eee;
+}
+#button_bar button {
+  margin-right: 5px;
+}

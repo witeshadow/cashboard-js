@@ -32,12 +32,20 @@
 
     <h3>Show Items</h3>
     <div id="button_bar">
-      <button onclick="DEMO.get_account();">Account</button>
-      <button onclick="DEMO.get_estimates();">Estimates</button>
-      <button onclick="DEMO.get_projects();">Projects</button>
-      <button onclick="DEMO.get_tasks();">Tasks</button>
-      <button onclick="DEMO.get_invoices();">Invoices</button>
-      <button onclick="DEMO.get_payments();">Payments</button>
+      <div id="buttons">
+        <button onclick="DEMO.get_account();">Account</button>
+        <button onclick="DEMO.get_estimates();">Estimates</button>
+        <button onclick="DEMO.get_projects();">Projects</button>
+        <button onclick="DEMO.get_tasks();">Tasks</button>
+        <button onclick="DEMO.get_invoices();">Invoices</button>
+        <button onclick="DEMO.get_payments();">Payments</button>
+      </div>
+      <div id="loading_message" style="display:none;">
+        <img src="indicator.gif" width="16" height="16" alt="Loading indicator" 
+          style="float:left;margin-right: 5px;" 
+        />
+        <b>Loading data from server</b>
+      </div>
     </div>
     
     <div id="display_container">

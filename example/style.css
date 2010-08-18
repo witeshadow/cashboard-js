@@ -211,3 +211,7 @@ fieldset input[type="text"] {
 #button_bar button {
   margin-right: 5px;
 }
+
+#display_area table.properties th {
+  width: 200px;
+}

@@ -27,15 +27,14 @@ var DEMO = {
     DEMO.display("Cashboard API Error " + code + ": " + message);
   },
   
-  // Notice that we're using the global reference DEMO.cb_conn
-  // to pass to the new CashboardObject.
+  // Fetches account properties from API, then displays.
   get_account: function() {
     this.authenticate();
     CASHBOARD.account.list({
       onFailure: DEMO.display_error,
-      onSuccess: function(json_obj) {
-        acct = new CASHBOARD.Account(json_obj);
-        console.log(acct);
+      // Will be passed a typecasted CASHBOARD.Account object.
+      onSuccess: function(cb_account) {
+        console.log(cb_account);
       }
     });
   },
@@ -43,7 +42,11 @@ var DEMO = {
   get_estimates: function() {
     this.authenticate();
     CASHBOARD.estimates.list({
-      onFailure: DEMO.display_error
+      onFailure: DEMO.display_error,
+      // Will be passed an array of typecasted CASHBOARD.Estimate objects.
+      onSuccess: function(cb_estimates) {
+        console.log(cb_estimates);
+      }
     });
   },
   

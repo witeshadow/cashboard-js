@@ -24,7 +24,7 @@ var DEMO = {
   //
   // See Cashboard.callback_failure as a template for overriding.
   display_error: function(code, message) {
-    this.display("Cashboard API Error " + code + ": " + message);
+    DEMO.display("Cashboard API Error " + code + ": " + message);
   },
   
   // Notice that we're using the global reference DEMO.cb_conn
@@ -32,7 +32,7 @@ var DEMO = {
   get_account: function() {
     this.authenticate();
     this.cb_conn.account.list({
-      onFailure: this.display_error,
+      onFailure: DEMO.display_error,
       onSuccess: function(json_obj) {
         acct = new CashboardObject(DEMO.cb_conn, json_obj);
         console.log(acct);
@@ -42,22 +42,30 @@ var DEMO = {
     
   get_estimates: function() {
     this.authenticate();
-    this.cb_conn.estimates.list();
+    this.cb_conn.estimates.list({
+      onFailure: DEMO.display_error
+    });
   },
   
   get_projects: function() {
     this.authenticate();
-    this.cb_conn.projects.list();
+    this.cb_conn.projects.list({
+      onFailure: DEMO.display_error
+    });
   },
   
   get_tasks: function() {
     this.authenticate();
-    this.cb_conn.tasks.list();
+    this.cb_conn.tasks.list({
+      onFailure: DEMO.display_error
+    });
   },
   
   get_invoices: function() {
     this.authenticate();
-    this.cb_conn.invoices.list();
+    this.cb_conn.invoices.list({
+      onFailure: DEMO.display_error
+    });
   },
   
   // create_new_invoice: function() {

@@ -11,7 +11,7 @@ var DEMO = {
   authenticate: function() {
     var subdomain = document.getElementById('subdomain').value;
     var api_key = document.getElementById('api_key').value;
-    this.cb_conn = new Cashboard(subdomain, api_key);
+    CASHBOARD.authenticate(subdomain, api_key);
   },
   // Shortcut to grab display reference
   display: function(content) {
@@ -31,10 +31,10 @@ var DEMO = {
   // to pass to the new CashboardObject.
   get_account: function() {
     this.authenticate();
-    this.cb_conn.account.list({
+    CASHBOARD.account.list({
       onFailure: DEMO.display_error,
       onSuccess: function(json_obj) {
-        acct = new CashboardObject(DEMO.cb_conn, json_obj);
+        acct = new CASHBOARD.Account(json_obj);
         console.log(acct);
       }
     });
@@ -42,34 +42,34 @@ var DEMO = {
     
   get_estimates: function() {
     this.authenticate();
-    this.cb_conn.estimates.list({
+    CASHBOARD.estimates.list({
       onFailure: DEMO.display_error
     });
   },
   
   get_projects: function() {
     this.authenticate();
-    this.cb_conn.projects.list({
+    CASHBOARD.projects.list({
       onFailure: DEMO.display_error
     });
   },
   
   get_tasks: function() {
     this.authenticate();
-    this.cb_conn.tasks.list({
+    CASHBOARD.tasks.list({
       onFailure: DEMO.display_error
     });
   },
   
   get_invoices: function() {
     this.authenticate();
-    this.cb_conn.invoices.list({
+    CASHBOARD.invoices.list({
       onFailure: DEMO.display_error
     });
   },
   
   // create_new_invoice: function() {
-  //   this.cb_conn.invoices.create(
+  //   CASHBOARD.invoices.create(
   //     {
   //       assigned_id: 'INV-00010',
   //       client_id: 12345,

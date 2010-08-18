@@ -59,7 +59,15 @@ CASHBOARD.employees.create(
  }
 );
 
-p. 
+p.
+
+h3. Demo
+
+For a more extended use scenario, check out the /example folder.
+
+You can open the demo.html file in Safari and poke around using the API. Check out demo.js for a very quick example of interacting with the API.
+
+You could probably even use demo.js as a base to develop Webkit based widgets for your own personal use. Right now it only works in Safari (and I'm guessing Google Chrome). Firefox will NOT work with the demo, as it doesn't allow HTTPS requests via XMLHttpRequest from your local machine to the Cashboard server.
 
 h2. Roadmap
 

@@ -59,15 +59,21 @@
       </fieldset>
     </form>
 
+    <h3>Simple Time Entry</h3>
+    <div id="time_entry">
+      
+    </div>
+
     <h3>Show Items</h3>
     <div id="button_bar">
       <div id="buttons">
         <button onclick="DEMO.get_account();">Account</button>
         <button onclick="DEMO.get_estimates();">Estimates</button>
         <button onclick="DEMO.get_projects();">Projects</button>
+        <button onclick="DEMO.get_projects({active: true});">Active Projects</button>
         <button onclick="DEMO.get_line_items();">All Line Items</button>
-        <button onclick="DEMO.get_line_item_tasks();">Tasks</button>
-        <button onclick="DEMO.get_line_item_products();">Products</button>
+        <button onclick="DEMO.get_line_items({type: 'task'});">Tasks</button>
+        <button onclick="DEMO.get_line_items({type: 'product'});">Products</button>
         <button onclick="DEMO.get_invoices();">Invoices</button>
         <button onclick="DEMO.get_payments();">Payments</button>
       </div>

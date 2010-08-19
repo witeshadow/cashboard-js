@@ -31,9 +31,16 @@ var DEMO = {
     });
   },
   
-  get_projects: function() {
+  get_projects: function(options) {
+    options = options || {};
+    // Allow listing only active projects
+    if (options['active'] && options['active'] === true) {
+      list_function = 'active';
+    } else {
+      list_function = 'list';
+    }
     this.authenticate();
-    CASHBOARD.projects.list({
+    CASHBOARD.projects[list_function]({
       onLoading: DEMO.show_loading,
       onFailure: DEMO.display_error,
       // Will be passed an array of typecasted CASHBOARD.Project objects.
@@ -44,43 +51,27 @@ var DEMO = {
     });
   },
   
-  get_line_items: function() {
+  get_line_items: function(options) {
+    options = options || {};
+    // allow passing in the type of item to list
+    if (options['type'] && options['type'] === 'task') {
+      type = 'Task Line Item';
+      list_function = 'tasks';
+    } else if (options['type'] && options['type'] === 'product') {
+      type = 'Product Line Item';
+      list_function = 'products';
+    } else {
+      type = 'Line Item';
+      list_function = 'list';
+    }
     this.authenticate();
-    CASHBOARD.line_items.list({
+    CASHBOARD.line_items[list_function]({
       onLoading: DEMO.show_loading,
       onFailure: DEMO.display_error,
       // Will be passed an array of typecasted CASHBOARD.LineItem objects.
       onSuccess: function(cb_line_items) {
         DEMO.hide_loading();
-        DEMO.display_cb_collection('Line Item', cb_line_items);
-      }
-    });
-  },
-  
-  get_line_item_tasks: function() {
-    this.authenticate();
-    CASHBOARD.line_items.tasks({
-      onLoading: DEMO.show_loading,
-      onFailure: DEMO.display_error,
-      // Will be passed an array of typecasted CASHBOARD.LineItem objects
-      // that are only of type Task.
-      onSuccess: function(cb_tasks) {
-        DEMO.hide_loading();
-        DEMO.display_cb_collection('Task Line Item', cb_tasks);
-      }
-    });
-  },
-  
-  get_line_item_products: function() {
-    this.authenticate();
-    CASHBOARD.line_items.tasks({
-      onLoading: DEMO.show_loading,
-      onFailure: DEMO.display_error,
-      // Will be passed an array of typecasted CASHBOARD.LineItem objects
-      // that are only of type Task.
-      onSuccess: function(cb_products) {
-        DEMO.hide_loading();
-        DEMO.display_cb_collection('Product Line Item', cb_products);
+        DEMO.display_cb_collection(type, cb_line_items);
       }
     });
   },

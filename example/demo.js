@@ -57,6 +57,34 @@ var DEMO = {
     });
   },
   
+  get_line_item_tasks: function() {
+    this.authenticate();
+    CASHBOARD.line_items.tasks({
+      onLoading: DEMO.show_loading,
+      onFailure: DEMO.display_error,
+      // Will be passed an array of typecasted CASHBOARD.LineItem objects
+      // that are only of type Task.
+      onSuccess: function(cb_tasks) {
+        DEMO.hide_loading();
+        DEMO.display_cb_collection('Task Line Item', cb_tasks);
+      }
+    });
+  },
+  
+  get_line_item_products: function() {
+    this.authenticate();
+    CASHBOARD.line_items.tasks({
+      onLoading: DEMO.show_loading,
+      onFailure: DEMO.display_error,
+      // Will be passed an array of typecasted CASHBOARD.LineItem objects
+      // that are only of type Task.
+      onSuccess: function(cb_products) {
+        DEMO.hide_loading();
+        DEMO.display_cb_collection('Product Line Item', cb_products);
+      }
+    });
+  },
+  
   get_invoices: function() {
     this.authenticate();
     CASHBOARD.invoices.list({

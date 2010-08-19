@@ -59,7 +59,7 @@ CASHBOARD.employees.create(
  }
 );
 
-p.
+p. 
 
 h3. Demo
 

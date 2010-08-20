@@ -73,6 +73,7 @@ h2. Roadmap
 
 I'd like to get around to this sooner or later.
 
+# Some sort of documentation besides the code files
 # A testing framework of some sort and actual unit tests :)
 # Automated build script that combines all JS files and minifies them
 

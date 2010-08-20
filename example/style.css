@@ -170,6 +170,13 @@ button {
   cursor: hand;
 }
 
+button.disabled {
+  color: #666;
+  background-color: #999;
+  border-color: #888;
+  cursor:auto;
+}
+
 fieldset {
   border: 1px solid #ddd;
   padding: 10px;
@@ -197,6 +204,7 @@ fieldset label {
 
 fieldset input[type="text"] {
   height: 20px;
+  width: 250px;
 }
 
 #container {
@@ -214,4 +222,12 @@ fieldset input[type="text"] {
 
 #display_area table.properties th {
   width: 200px;
+}
+
+#time_entry select, #time_entry input[type="text"], #time_entry textarea {
+  width: 250px;
+}
+
+#te_status {
+  height: 30px;
 }

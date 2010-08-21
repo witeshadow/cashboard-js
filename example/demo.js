@@ -120,8 +120,10 @@ var DEMO = {
   },
   
   // Shortcut to grab display reference
-  display: function(content) {
-    DEMO.hide_loading();
+  display: function(content, skip_hide_loading) {
+    if (skip_hide_loading != true) {
+      DEMO.hide_loading();
+    }
     var area = document.getElementById('display_area');
     area.innerHTML = content;
   },
@@ -202,7 +204,7 @@ var DEMO = {
     loading.style.display = 'block';
     var buttons = document.getElementById('buttons');
     buttons.style.display = 'none';
-    DEMO.display('');
+    DEMO.display('', true);
   },
   hide_loading: function() {
     var loading = document.getElementById('loading_message');

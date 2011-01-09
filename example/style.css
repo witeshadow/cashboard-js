@@ -232,7 +232,8 @@ fieldset input[type="text"] {
   width: 200px;
 }
 
-#time_entry select, #time_entry input[type="text"], #time_entry textarea {
+#time_entry select, #time_entry input[type="text"], #time_entry textarea,
+#payment select, #payment input[type="text"], #payment textarea {
   width: 250px;
 }
 

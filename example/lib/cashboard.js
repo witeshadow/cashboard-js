@@ -11,8 +11,8 @@
  */
 
 // Represents a resource on the Cashboard API.
-// 
-// Gives us simple utility methods to list and create CashboardObjects of 
+//
+// Gives us simple utility methods to list and create CashboardObjects of
 // a certain type.
 var CashboardResource = Class.extend({
   _url: null, // url to access resource
@@ -36,9 +36,9 @@ var CashboardObject = Class.extend({
   _data: null, // stores json
   // Initialize new CashboardObject from JSON object.
   init: function(json_obj) {
-    this._data = json_obj;    
+    this._data = json_obj;
     for (var prop in json_obj) {
-      this[prop] = json_obj[prop]; 
+      this[prop] = json_obj[prop];
     }
   },
   // The unique URL of this object on the server
@@ -56,35 +56,35 @@ var CashboardObject = Class.extend({
     CASHBOARD.destroy(this.get_url(), callbacks);
   }
 });
- 
+
 
 var CASHBOARD = {
   VERSION: 0.9,
-  
+
   // Codes defined by Cashboard -----------------------------------------------
-  
+
   LINE_ITEM_TYPE_CODES: {
     custom: 0,
     task: 1,
     product: 2
   },
-  
+
   PROJECT_BILLING_CODES: {
     non_billable: 0,
     task_rate: 1,
     employee_rate: 2,
   },
-  
+
   PROJECT_CLIENT_VIEW_TIME_CODES: {
     show_when_invoiced: 0,
     show_when_billable: 1,
     show_never: 2
   },
-  
+
   // Our version of "class variables" -----------------------------------------
-  
+
  // _api_url: 'https://api.cashboardapp.com',
-  _api_url: 'http://witeshadow.com/php_proxy_simple.php?yws_path=',
+  _api_url: 'http://witeshadow.com/ba-simple-proxy.php?url=',
   _mime_type: 'application/json',
   // Used for authentication
   _subdomain: '',
@@ -95,7 +95,7 @@ var CASHBOARD = {
     this._subdomain = subdomain;
     this._api_key = api_key;
   },
-   
+
   notify: function(str) {
     if (typeof console === 'object') {
       console.log(str);
@@ -103,18 +103,18 @@ var CASHBOARD = {
       alert(str);
     }
   },
-  
+
   // Standard way of reporting success if no onSuccess callback is defined.
   callback_success: function(str) {
     // Call CASHBOARD as 'this' is ambiguous from callback context
     CASHBOARD.notify(str);
   },
-  
+
   // Standard way of reporting an error if no onFailure callback is defined.
   callback_failure: function(code, message) {
     var str = "Cashboard API Error " + code + ": " + message;
     // Call CASHBOARD as 'this' is ambiguous from callback context
-    CASHBOARD.notify(str); 
+    CASHBOARD.notify(str);
   },
 
   // Sets the proper JSON headers.
@@ -132,7 +132,7 @@ var CASHBOARD = {
     callbacks = callbacks || {};
     callbacks["onSuccess"] = callbacks["onSuccess"] || this.callback_success;
     callbacks["onFailure"] = callbacks["onFailure"] || this.callback_failure;
-    
+
     // Run onLoading for UI updating inside HTML.
     if (typeof callbacks["onLoading"] !== 'undefined') {
       callbacks["onLoading"]();
@@ -151,7 +151,7 @@ var CASHBOARD = {
           } catch(err) {
             return_val = c.responseText;
           }
-          
+
           // Cast returning objects as appropriate type if we have one
           if (parsed_json !== null && data_type !== null) {
             if (parsed_json instanceof Array) {
@@ -191,7 +191,7 @@ var CASHBOARD = {
     this.set_callbacks(c, data_type, callbacks);
     return c;
   },
-    
+
   get: function(url, callbacks, data_type) {
     var conn = this.get_connection("GET", url, callbacks, data_type);
     conn.send();
@@ -204,14 +204,14 @@ var CASHBOARD = {
     var conn = this.get_connection("POST", url, callbacks, data_type);
     conn.send(JSON.stringify(data));
   },
-  destroy: function(url, callbacks) { 
+  destroy: function(url, callbacks) {
     var conn = this.get_connection("DELETE", url, callbacks);
     conn.send();
   },
-  
-  
+
+
   // Resource definitions -----------------------------------------------------
-  
+
   // Metaprogramming to define resources instead of repeating code a bunch
   // of times.
   //
@@ -240,21 +240,21 @@ var CASHBOARD = {
       ['projects', 'Project', CASHBOARD.ProjectsResource],
       ['time_entries', 'TimeEntry']
     ];
-    
+
     for (var i=0; i<resources.length; i++) {
       var r = resources[i];
       // Name / path of the resource
-      var r_name = r[0]; 
+      var r_name = r[0];
       // CashboardObject or a descendant
-      var r_obj = r[1]; 
+      var r_obj = r[1];
       // CashboardResource or a descendant
-      var r_resource = (r[2] || CashboardResource); 
+      var r_resource = (r[2] || CashboardResource);
       this[r_name] = new r_resource('/'+r_name, this[r_obj]);
     }
   },
-  
+
   // Resource overrides -------------------------------------------------------
-  
+
   EstimatesResource: CashboardResource.extend({
     active: function(callbacks) {
       var url = this.active_url(true);
@@ -272,7 +272,7 @@ var CASHBOARD = {
       return url;
     }
   }),
-  
+
   // Includes convenience methods for listing line item by type
   // by passing the type_code paramater to our list method.
   LineItemsResource: CashboardResource.extend({
@@ -288,7 +288,7 @@ var CASHBOARD = {
       var url = this.typed_line_item_url(CASHBOARD.LINE_ITEM_TYPE_CODES.custom);
       CASHBOARD.get(url, callbacks, this._data_type);
     },
-    // Certain line item types are fetched by appending a 
+    // Certain line item types are fetched by appending a
     // type_code param to the base 'line_items' url.
     typed_line_item_url: function(line_item_type) {
       var url = new String(this._url);
@@ -296,7 +296,7 @@ var CASHBOARD = {
       return url;
     }
   }),
-  
+
   ProjectsResource: CashboardResource.extend({
     active: function(callbacks) {
       var url = this.active_url(true);
@@ -314,13 +314,13 @@ var CASHBOARD = {
       return url;
     }
   }),
-  
+
   // Data objects & overrides -------------------------------------------------
-  
+
   Account:           CashboardObject.extend({
     destroy: function() { throw "You can't destroy an account via the API" }
   }),
-  
+
   ClientContact:     CashboardObject.extend(),
   ClientCompany:     CashboardObject.extend(),
   CompanyMembership: CashboardObject.extend(),
@@ -330,13 +330,13 @@ var CASHBOARD = {
   Expense:           CashboardObject.extend(),
   InvoiceLineItem:   CashboardObject.extend(),
   InvoicePayment:    CashboardObject.extend(),
-  
+
   Invoice:           CashboardObject.extend({
     // Lists all invoice_line_items associated with an invoice
     line_items: function(callbacks) {
       CASHBOARD.get(
-        this.links.line_items, 
-        callbacks, 
+        this.links.line_items,
+        callbacks,
         CASHBOARD.InvoiceLineItem
       );
     },
@@ -353,9 +353,9 @@ var CASHBOARD = {
     //     }
     import_uninvoiced_items: function(options, callbacks) {
       CASHBOARD.put(
-        this.links.import_uninvoiced_items, 
-        options, 
-        callbacks, 
+        this.links.import_uninvoiced_items,
+        options,
+        callbacks,
         CASHBOARD.InvoiceLineItem
       );
     },
@@ -363,13 +363,13 @@ var CASHBOARD = {
   LineItem:          CashboardObject.extend(),
   Payment:           CashboardObject.extend(),
   ProjectAssignment: CashboardObject.extend(),
-  
+
   Project:           CashboardObject.extend({
     // All employees assigned to this project
     assigned_employees: function(callbacks) {
       CASHBOARD.get(
-        this.links.assigned_employees, 
-        callbacks, 
+        this.links.assigned_employees,
+        callbacks,
         CASHBOARD.Employee
       );
     },
@@ -382,7 +382,7 @@ var CASHBOARD = {
       CASHBOARD.put(this.links.toggle_status, null, callbacks, this._data_type);
     }
   }),
-  
+
   // Toggling a timer will return the toggled timer and any other timer
   // that was stopped as a result of this toggle.
   TimeEntry:         CashboardObject.extend({

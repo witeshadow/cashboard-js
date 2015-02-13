@@ -84,7 +84,11 @@ var CASHBOARD = {
   // Our version of "class variables" -----------------------------------------
 
  // _api_url: 'https://api.cashboardapp.com',
+<<<<<<< .merge_file_a07352
   _api_url: 'http://witeshadow.com/php_proxy_simple.php?url=https://api.cashboard.com',
+=======
+  _api_url: 'http://witeshadow.com/ba-simple-proxy.php?url=',
+>>>>>>> .merge_file_a02180
   _mime_type: 'application/json',
   // Used for authentication
   _subdomain: '',

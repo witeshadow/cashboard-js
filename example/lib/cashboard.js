@@ -84,10 +84,11 @@ var CASHBOARD = {
   // Our version of "class variables" -----------------------------------------
 
  // _api_url: 'https://api.cashboardapp.com',
-  _api_url: 'http://witeshadow.com/ba-simple-proxy.php?url=',
-  _mime_type: 'application/json',
+  // _api_url: '',
   // Used for authentication
   _subdomain: '',
+  _api_url: 'http://witeshadow.com/cb/cashboard-sj/ba-simple-proxy.php?url=https://api.cashboardapp.com',
+  _mime_type: 'application/json',
   _api_key: '',
 
   // Should be called before any requests are made.

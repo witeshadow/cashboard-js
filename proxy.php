@@ -5,7 +5,7 @@
  *   (NOTE: there could be a small security risk by doing a naiive REQUEST to pass the proxy URL without POST + SSL and more thorough validation. Only if an attacker knew the location of this script, would there be a chance they can use it as a proxy for attacks to other servers, or this server. For our purposes, it probably is negligible, but for more on how to solve potential issues, see: http://php.net/manual/en/function.fopen.php  or:  http://www.virtualforge.de/vmovie/xss_selling_platform_v1.0.php)
  */
  
-$url = $_REQUEST['url']; //URL to grab (again, see NOTE on security above)
+$url = $_REQUEST['https://api.cashboardapp.com']; //URL to grab (again, see NOTE on security above)
 if (empty($url)) { $url = "http://dd.weatheroffice.ec.gc.ca/citypage_weather/xml/NB/s0000687_e.xml"; } //make sure we always get some data (default to a Weather feed)
  
 /**

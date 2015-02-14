@@ -84,8 +84,7 @@ var CASHBOARD = {
   // Our version of "class variables" -----------------------------------------
 
  // _api_url: 'https://api.cashboardapp.com',
-  // _api_url: '',
-  // Used for authentication
+ // Used for authentication
   _subdomain: '',
  //_api_url: 'https://1f57308a.ngrok.com'
   _api_url: 'http://witeshadow.com/cb/cashboard-js/example/ba-simple-proxy.php?url=https://api.cashboardapp.com',

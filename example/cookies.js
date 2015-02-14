@@ -1,4 +1,4 @@
-// Namespaced cookie util functions. Jacked from a Danny Goodman example circa 2003.
+// Namespaced cookie util functions. Jacked from a Danny Goodman example circa 2003. 
 var COOKIES = {
   getVal: function(offset) {
     var endstr = document.cookie.indexOf (";", offset);
